@@ -8,6 +8,12 @@ app = Flask(__name__)
 model = joblib.load('models/FungiGuard_model.joblib') 
 scaler = joblib.load('models/minmax_scaler.joblib') 
 
+@app.route('/')
+def home():
+    return jsonify({
+        'message': 'Welcome to the Flask API! This is the default endpoint.'
+    })
+
 @app.route('/api/v1/predict', methods=['GET'])
 def predict():
     array_of_inputs = [1.        , 0.8       , 0.45454545, 1.        , 0.63636364,
