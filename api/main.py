@@ -1,5 +1,5 @@
 # from flask import Flask, request, jsonify
-# import joblib
+
 # import tensorflow as tf
 # import numpy as np
 
@@ -32,11 +32,14 @@
 #     app.run()
 
 from flask import Flask, jsonify
+import joblib
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
+    model = joblib.load('models/FungiGuard_model.joblib') 
+    scaler = joblib.load('models/minmax_scaler.joblib') 
     return jsonify({"message": "Hello from Flask on Vercel!"})
 
 # Export the WSGI app
