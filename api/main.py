@@ -1,18 +1,18 @@
-from flask import Flask, request, jsonify
-import joblib
-import tensorflow as tf
-import numpy as np
+# from flask import Flask, request, jsonify
+# import joblib
+# import tensorflow as tf
+# import numpy as np
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-model = joblib.load('models/FungiGuard_model.joblib') 
-scaler = joblib.load('models/minmax_scaler.joblib') 
+# model = joblib.load('models/FungiGuard_model.joblib') 
+# scaler = joblib.load('models/minmax_scaler.joblib') 
 
-@app.route('/')
-def home():
-    return jsonify({
-        'message': 'Welcome to the Flask API! This is the default endpoint.'
-    })
+# @app.route('/')
+# def home():
+#     return jsonify({
+#         'message': 'Welcome to the Flask API! This is the default endpoint.'
+#     })
 
 # @app.route('/api/v1/predict', methods=['GET'])
 # def predict():
@@ -28,5 +28,17 @@ def home():
 #         "prediction" : edibility
 #     })
 
+# if __name__ == "__main__":
+#     app.run()
+
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return jsonify({"message": "Hello from Flask on Vercel!"})
+
+# Export the WSGI app
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
